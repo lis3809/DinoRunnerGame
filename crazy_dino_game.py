@@ -54,16 +54,16 @@ class CrazyDinoRunnerGame():
         self.dino = Dino(self.screen)
         self.all_sprites.add(self.dino)
 
-        # В начале игры будет всего три кактуса
+        # Будет всего три кактуса
         count_kaktus = 3
         for i in range(count_kaktus):
             # Объект астероида
             kaktus = Kaktus(self.screen)
             self.all_sprites.add(kaktus)
 
-        # В начале игры будет всего 3 ящика
-        count_brick = 3
-        for i in range(count_kaktus):
+        # В начале игры будет всего 1 ящик
+        self.count_brick = 1
+        for i in range(self.count_brick):
             # Объект астероида
             brick = Brick(self.screen)
             self.all_sprites.add(brick)

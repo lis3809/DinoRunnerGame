@@ -20,14 +20,14 @@ class Brick(pg.sprite.Sprite):
         self.screen = screen
         self.image = load_img("picture/brick.png")
         self.rect = self.image.get_rect()
-        self.rect.x = screen.get_width() + + self.rect.width + random.randint(0, screen.get_width())
+        self.rect.x = screen.get_width() + self.rect.width + random.randint(0, screen.get_width())
         self.rect.bottom = screen.get_height() - game_config.BOTTOM_DINO
         self.speed = 5
 
     def update(self):
         self.rect.x -= self.speed
         if self.rect.x < 0:
-            self.rect.x = self.screen.get_width() + self.rect.width
+            self.rect.x = self.screen.get_width() + self.rect.width + random.randint(0, self.screen.get_width())
 
     def draw(self):
         self.screen.blit(self.image, self.rect)
