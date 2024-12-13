@@ -2,7 +2,6 @@ import pygame as pg
 
 import game_config
 import game_config as config
-from game_dialog import GameDialog
 from game_objects.brick import Brick
 from game_objects.dino import Dino
 from game_objects.kaktus import Kaktus
@@ -28,16 +27,6 @@ class CrazyDinoRunnerGame():
         # Текущее значение очков игрока
         self.__current_player_score = 0
 
-        # Создаем объект класса GameDialog
-        self.__game_dialog = GameDialog()
-
-        # Запрашиваем имя игрока
-        self.__player_name = self.__game_dialog.show_dialog_login()
-        print(self.__player_name)
-
-        # TODO
-        #self.__first_player_score = 10
-
         # Вызываем метод инициализациии остальных параметров
         self.__init_game()
 
@@ -48,7 +37,6 @@ class CrazyDinoRunnerGame():
 
         # Список всех спрайтов (графических объектов)
         self.all_sprites = pg.sprite.Group()
-
 
         # Объект игрока
         self.dino = Dino(self.screen)

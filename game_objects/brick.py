@@ -1,4 +1,4 @@
-# Класс кактус
+# Класс ящик
 import pygame as pg
 import random
 

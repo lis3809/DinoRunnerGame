@@ -19,9 +19,14 @@ class Dino(pg.sprite.Sprite):
         self.image = load_img("picture/dino.png")
         self.rect = self.image.get_rect()
 
-        self.rect.bottom = screen.get_height() - game_config.BOTTOM_DINO
+        self.dino_bottom = screen.get_height() - game_config.BOTTOM_DINO
+        self.rect.bottom = self.dino_bottom
         self.rect.centerx = 100
         self.speedx = 0
+        # для прыжка
+        self.is_jumping = False
+        self.jump_height = screen.get_height() - game_config.BOTTOM_DINO - 150
+        self.speedy = 10
 
     def update(self):
         keys = pg.key.get_pressed()
@@ -37,6 +42,26 @@ class Dino(pg.sprite.Sprite):
             self.rect.right = game_config.WINDOW_SIZE[0]
         if self.rect.left < 0:
             self.rect.left = 0
+
+        # для прыжка
+        if not self.is_jumping:
+            if keys[pg.K_SPACE]:
+                self.is_jumping = True
+
+        self.jump()
+
+    def jump(self):
+        if self.is_jumping and self.rect.bottom > self.jump_height:
+            self.rect.bottom -= self.speedy
+            # Если достигли высоты прыжка
+            if self.rect.bottom <= self.jump_height:
+                self.is_jumping = False
+        else:
+            if self.rect.bottom < self.dino_bottom:
+                self.rect.bottom += self.speedy
+            else:
+                self.rect.bottom = self.dino_bottom
+
 
     def draw(self):
         self.screen.blit(self.image, self.rect)
