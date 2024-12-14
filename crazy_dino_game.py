@@ -2,6 +2,7 @@ import pygame as pg
 
 import game_config
 import game_config as config
+from game_dialog import GameDialog
 from game_objects.brick import Brick
 from game_objects.dino import Dino
 from game_objects.kaktus import Kaktus
@@ -24,13 +25,17 @@ class CrazyDinoRunnerGame():
         self.__FPS = config.FPS
         self.__clock = pg.time.Clock()
 
-        # Текущее значение очков игрока
-        self.__current_player_score = 0
+        # Создаем объект класса GameDialog
+        self.__game_dialog = GameDialog()
 
         # Вызываем метод инициализациии остальных параметров
         self.__init_game()
 
     def __init_game(self):
+
+        # Текущее значение очков игрока
+        self.__current_player_score = 0
+
         # Создаем объект основного окна
         self.screen = pg.display.set_mode(game_config.WINDOW_SIZE)
         pg.display.set_caption("Космическая гонка")
@@ -39,7 +44,7 @@ class CrazyDinoRunnerGame():
         self.all_sprites = pg.sprite.Group()
 
         # Отдельный список кирпичей
-        self.bricks_srite_group = pg.sprite.Group()
+        self.bricks_spr_gr = pg.sprite.Group()
 
         # Объект игрока
         self.dino = Dino(self.screen)
@@ -58,7 +63,7 @@ class CrazyDinoRunnerGame():
             # Объект астероида
             brick = Brick(self.screen)
             self.all_sprites.add(brick)
-            self.bricks_srite_group.add(brick)
+            self.bricks_spr_gr.add(brick)
 
     def __draw_scene(self):
         # отрисовка
