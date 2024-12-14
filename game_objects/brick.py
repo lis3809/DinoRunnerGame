@@ -26,8 +26,6 @@ class Brick(pg.sprite.Sprite):
 
     def update(self):
         self.rect.x -= self.speed
-        if self.rect.x < 0:
-            self.rect.x = self.screen.get_width() + self.rect.width + random.randint(0, self.screen.get_width())
 
     def draw(self):
         self.screen.blit(self.image, self.rect)

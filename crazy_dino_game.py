@@ -38,6 +38,9 @@ class CrazyDinoRunnerGame():
         # Список всех спрайтов (графических объектов)
         self.all_sprites = pg.sprite.Group()
 
+        # Отдельный список кирпичей
+        self.bricks_srite_group = pg.sprite.Group()
+
         # Объект игрока
         self.dino = Dino(self.screen)
         self.all_sprites.add(self.dino)
@@ -55,6 +58,7 @@ class CrazyDinoRunnerGame():
             # Объект астероида
             brick = Brick(self.screen)
             self.all_sprites.add(brick)
+            self.bricks_srite_group.add(brick)
 
     def __draw_scene(self):
         # отрисовка
